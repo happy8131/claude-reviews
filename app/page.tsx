@@ -1,5 +1,8 @@
 "use client";
 
+import { useTheme } from "next-themes";
+import { useEffect, useState } from "react";
+import { Moon, Sun } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -13,8 +16,33 @@ import { toast } from "sonner";
 import { MoreVertical } from "lucide-react";
 
 export default function Home() {
+  const { theme, setTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
   return (
     <div className="min-h-screen bg-background text-foreground">
+      {/* 다크모드 토글 */}
+      <div className="fixed top-4 right-4 z-50">
+        {mounted && (
+          <Button
+            onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+            variant="outline"
+            size="icon"
+            aria-label="토글 테마"
+          >
+            {theme === "dark" ? (
+              <Sun className="w-4 h-4" />
+            ) : (
+              <Moon className="w-4 h-4" />
+            )}
+          </Button>
+        )}
+      </div>
+
       {/* 히어로 섹션 */}
       <section className="w-full py-20 px-4 md:py-32 md:px-8 flex items-center justify-center">
         <div className="max-w-2xl text-center space-y-6">
