@@ -1,47 +1,18 @@
-"use client";
-
-import { useTheme } from "next-themes";
-import { useEffect, useState } from "react";
-import { Moon, Sun } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Textarea } from "@/components/ui/textarea";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
-import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { toast } from "sonner";
-import { MoreVertical } from "lucide-react";
+import { ThemeToggle } from "@/components/theme-toggle";
+import { ProfileCard } from "@/components/profile-card";
+import { FeedbackForm } from "@/components/feedback-form";
+import { ToastDemo } from "@/components/toast-demo";
 
 export default function Home() {
-  const { theme, setTheme } = useTheme();
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
   return (
     <div className="min-h-screen bg-background text-foreground">
       {/* 다크모드 토글 */}
-      <div className="fixed top-4 right-4 z-50">
-        {mounted && (
-          <Button
-            onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-            variant="outline"
-            size="icon"
-            aria-label="토글 테마"
-          >
-            {theme === "dark" ? (
-              <Sun className="w-4 h-4" />
-            ) : (
-              <Moon className="w-4 h-4" />
-            )}
-          </Button>
-        )}
-      </div>
+      <ThemeToggle />
 
       {/* 히어로 섹션 */}
       <section className="w-full py-20 px-4 md:py-32 md:px-8 flex items-center justify-center">
@@ -73,65 +44,8 @@ export default function Home() {
 
           {/* 그리드 레이아웃 */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {/* Card + Avatar + Badge + Separator */}
-            <Card className="p-6 space-y-4">
-              <div className="flex items-start justify-between">
-                <div className="flex items-center gap-3">
-                  <Avatar>
-                    <AvatarImage src="https://github.com/shadcn.png" />
-                    <AvatarFallback>CN</AvatarFallback>
-                  </Avatar>
-                  <div>
-                    <h3 className="font-semibold">사용자 프로필</h3>
-                    <p className="text-sm text-muted-foreground">
-                      제임스 앨런
-                    </p>
-                  </div>
-                </div>
-                <Badge variant="secondary">Pro</Badge>
-              </div>
-              <Separator />
-              <p className="text-sm text-foreground">
-                모던 UI 컴포넌트를 사용해 멋진 인터페이스를 만들어 보세요.
-              </p>
-              <button className="inline-flex items-center justify-center rounded-md p-1 hover:bg-muted transition-colors">
-                <MoreVertical className="w-4 h-4" />
-              </button>
-            </Card>
-
-            {/* Card + Form 요소 */}
-            <Card className="p-6 space-y-4">
-              <h3 className="font-semibold">피드백 폼</h3>
-              <div className="space-y-3">
-                <div>
-                  <Label htmlFor="name" className="text-sm">
-                    이름
-                  </Label>
-                  <Input
-                    id="name"
-                    placeholder="당신의 이름을 입력하세요"
-                    className="mt-1"
-                  />
-                </div>
-                <div>
-                  <Label htmlFor="message" className="text-sm">
-                    메시지
-                  </Label>
-                  <Textarea
-                    id="message"
-                    placeholder="피드백을 입력하세요"
-                    className="mt-1"
-                    rows={3}
-                  />
-                </div>
-                <Button
-                  onClick={() => toast.success("감사합니다!")}
-                  className="w-full"
-                >
-                  전송
-                </Button>
-              </div>
-            </Card>
+            <ProfileCard />
+            <FeedbackForm />
 
             {/* Tabs */}
             <Card className="p-6 md:col-span-2">
@@ -169,33 +83,7 @@ export default function Home() {
               </Tabs>
             </Card>
 
-            {/* Toast Demo */}
-            <Card className="p-6 space-y-4">
-              <h3 className="font-semibold">알림(Toast)</h3>
-              <div className="space-y-2">
-                <Button
-                  onClick={() => toast.success("성공 메시지입니다!")}
-                  variant="secondary"
-                  className="w-full"
-                >
-                  성공 알림
-                </Button>
-                <Button
-                  onClick={() => toast.error("오류가 발생했습니다!")}
-                  variant="destructive"
-                  className="w-full"
-                >
-                  오류 알림
-                </Button>
-                <Button
-                  onClick={() => toast("일반 메시지입니다")}
-                  variant="outline"
-                  className="w-full"
-                >
-                  기본 알림
-                </Button>
-              </div>
-            </Card>
+            <ToastDemo />
           </div>
         </div>
       </section>

@@ -16,6 +16,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000"),
   title: "Next.js Starter Kit",
   description: "모던 웹 개발을 위한 Next.js 스타터킷",
 };
@@ -24,7 +25,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       suppressHydrationWarning
-      lang="en"
+      lang="ko"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body suppressHydrationWarning className="min-h-full flex flex-col">

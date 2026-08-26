@@ -1,0 +1,67 @@
+- generic [ref=e1]:
+  - generic [ref=e2]:
+    - button "토글 테마" [ref=e74]
+    - generic [ref=e4]:
+      - heading "Next.js 스타터킷" [level=1] [ref=e5]
+      - paragraph [ref=e6]: 모던 웹 개발을 위한 완벽한 시작점. Next.js v16, TypeScript, Tailwind CSS, 그리고 shadcn/ui를 포함한 프로덕션 레벨의 스타터킷입니다.
+      - generic [ref=e7]:
+        - button "시작하기" [ref=e8]
+        - button "문서 보기" [ref=e9]
+    - separator [ref=e10]
+    - generic [ref=e12]:
+      - heading "컴포넌트 쇼케이스" [level=2] [ref=e13]
+      - generic [ref=e14]:
+        - generic [ref=e15]:
+          - generic [ref=e16]:
+            - generic [ref=e20]:
+              - heading "사용자 프로필" [level=3] [ref=e21]
+              - paragraph [ref=e22]: 제임스 앨런
+            - generic [ref=e23]: Pro
+          - separator [ref=e24]
+          - paragraph [ref=e25]: 모던 UI 컴포넌트를 사용해 멋진 인터페이스를 만들어 보세요.
+          - button [ref=e26]
+        - generic [ref=e31]:
+          - heading "피드백 폼" [level=3] [ref=e32]
+          - generic [ref=e33]:
+            - generic [ref=e34]:
+              - generic [ref=e35]: 이름
+              - textbox "이름" [ref=e36]:
+                - /placeholder: 당신의 이름을 입력하세요
+                - text: 테스트 사용자
+            - generic [ref=e37]:
+              - generic [ref=e38]: 메시지
+              - textbox "메시지" [ref=e39]:
+                - /placeholder: 피드백을 입력하세요
+                - text: 이것은 테스트 피드백입니다.
+            - button "전송" [ref=e40]
+        - generic [ref=e42]:
+          - tablist [ref=e43]:
+            - tab "개요" [selected] [ref=e44]
+            - tab "기능" [ref=e45]
+            - tab "기술 스택" [ref=e46]
+          - tabpanel "개요" [ref=e75]:
+            - heading "프로젝트 개요" [level=3] [ref=e48]
+            - paragraph [ref=e49]: 이것은 Next.js를 기반으로 한 현대적인 웹 애플리케이션을 빠르게 시작할 수 있는 스타터킷입니다.
+        - generic [ref=e50]:
+          - heading "알림(Toast)" [level=3] [ref=e51]
+          - generic [ref=e52]:
+            - button "성공 알림" [ref=e53]
+            - button "오류 알림" [ref=e54]
+            - button "기본 알림" [active] [ref=e55]
+    - generic [ref=e57]:
+      - heading "시작할 준비가 되셨나요?" [level=3] [ref=e58]
+      - paragraph [ref=e59]: 이 스타터킷을 기반으로 멋진 웹 애플리케이션을 만들어 보세요.
+      - generic [ref=e60]:
+        - generic [ref=e61]: 빠른 개발
+        - generic [ref=e62]: 생산성
+        - generic [ref=e63]: 모던 스택
+  - region "Notifications alt+T":
+    - list:
+      - listitem [ref=e99]:
+        - generic [ref=e100]: 일반 메시지입니다
+      - listitem [ref=e91]:
+        - generic [ref=e97]: 오류가 발생했습니다!
+      - listitem [ref=e84]:
+        - generic [ref=e89]: 성공 메시지입니다!
+  - button "Open Next.js Dev Tools" [ref=e69] [cursor=pointer]
+  - alert [ref=e76]
