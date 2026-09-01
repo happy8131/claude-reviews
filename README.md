@@ -1,36 +1,72 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 견적서 웹 뷰어
 
-## Getting Started
+Notion에 입력한 견적서를 클라이언트가 별도 로그인 없이 웹에서 확인하고 PDF로 저장할 수 있게 해주는 견적서 웹 뷰어입니다.
 
-First, run the development server:
+## 🎯 프로젝트 개요
+
+**목적**: 영업 담당자가 Notion에 입력한 견적서를, 클라이언트가 별도 로그인 없이 웹에서 확인하고 PDF로 저장할 수 있게 한다.
+**범위**: 견적서 공개 링크를 통한 조회 및 PDF 다운로드에 집중한 MVP. 로그인, 견적서 관리(작성/수정/삭제), 목록/검색, 승인/서명, 실시간 알림, 다국어 지원은 MVP 범위에서 제외한다.
+**사용자**: 영업 담당자로부터 견적서 공개 링크를 전달받은 B2B 클라이언트(구매 담당자, 의사결정권자).
+
+## 📱 주요 페이지
+
+1. **견적서 상세 페이지** (`/quotes/[id]`, 공개 링크 직접 진입) — 견적서 요약(고객명·총 금액·유효기한·상태·비고)과 견적 항목 리스트(품목·수량·단가·설명)를 확인하고 PDF로 다운로드
+2. **오류 안내 페이지** — 견적서 조회 실패(존재하지 않음/비공개/유효기한 만료) 시 자동 전환되어 사유를 안내
+
+> 인증 기능이 MVP 범위에서 제외되어 로그인/사용자별 메뉴는 존재하지 않으며, 모든 진입은 견적서별 공개 링크를 통해서만 이루어집니다.
+
+## ⚡ 핵심 기능
+
+- **견적서 조회 (F001)**: Notion Quotes DB에서 견적서 단건 데이터를 조회
+- **견적 항목 렌더링 (F002)**: Notion Items DB에서 견적서와 연결된 항목(품목·수량·단가·설명)을 조회 및 리스트 표시
+- **견적서 요약 표시 (F003)**: 고객명, 총 금액, 유효기한, 상태, 비고를 요약 영역에 표시
+- **PDF 다운로드 (F004)**: 화면에 렌더링된 견적서를 PDF 파일로 변환하여 다운로드
+- **반응형 레이아웃 (F005)**: 모바일/데스크톱 화면 크기에 맞춰 견적서 및 안내 화면 자동 조정
+- **조회 실패 안내 (F006)**: 존재하지 않음/비공개/유효기한 만료 등 사유별 안내 메시지 표시
+
+## 🛠️ 기술 스택
+
+- **Framework**: Next.js 16.3.2 (App Router)
+- **Runtime**: React 19.2.8
+- **Language**: TypeScript 5
+- **Styling**: Tailwind CSS 4 (PostCSS 기반)
+- **UI Components**: shadcn/ui (Base UI 기반, style: base-nova)
+- **Icons**: Lucide React
+- **데이터 연동**: @notionhq/client (Notion API 공식 SDK)
+- **PDF 생성**: html2canvas + jsPDF
+- **다크모드**: next-themes
+- **알림**: Sonner
+- **배포**: Vercel
+
+## 🚀 시작하기
 
 ```bash
+# 의존성 설치
+npm install
+
+# 개발 서버 실행
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+
+# 프로덕션 빌드
+npm run build
+
+# 프로덕션 서버 실행
+npm start
+
+# 린트 검사
+npm run lint
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+개발 서버 실행 후 [http://localhost:3000](http://localhost:3000) 에서 확인할 수 있습니다.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 📋 개발 상태
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- ✅ 프로젝트 초기 구조 정리 및 데모 콘텐츠 제거
+- ⏳ Notion API 연동 및 견적서 상세 페이지(`/quotes/[id]`) 구현
+- ⏳ 오류 안내 페이지 구현
+- ⏳ PDF 다운로드 기능 구현
 
-## Learn More
+## 📖 문서
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- [PRD 문서](./docs/PRD.md) — 상세 요구사항
+- [개발 가이드](./CLAUDE.md) — 개발 지침

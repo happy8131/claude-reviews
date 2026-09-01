@@ -17,8 +17,8 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000"),
-  title: "Next.js Starter Kit",
-  description: "모던 웹 개발을 위한 Next.js 스타터킷",
+  title: "견적서 웹 뷰어",
+  description: "Notion 기반 견적서를 웹에서 확인하고 PDF로 저장하는 뷰어",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

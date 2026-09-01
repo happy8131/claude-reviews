@@ -2,6 +2,10 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+**견적서 웹 뷰어**는 영업 담당자가 Notion에 입력한 견적서를 클라이언트가 별도 로그인 없이 웹에서 확인하고 PDF로 저장할 수 있게 하는 Next.js 애플리케이션입니다.
+
+📋 상세 프로젝트 요구사항은 @/docs/PRD.md 참조
+
 ## Project Overview
 
 This is a modern Next.js starter kit built with:
